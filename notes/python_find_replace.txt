@@ -1,0 +1,31 @@
+=> ----- to :
+
+2 spaces to 4 spaces
+
+remove all end
+
+false => False
+
+WidgetList::Utils::fill --> fill
+
+elsif -> elif with :
+
+else :
+
+if :
+
+def :
+
+!empty? with
+
+len(items['class']) > 0
+
+key? with in
+
+
+#{
+
+start of variable and concatenate something new
+
+
+A standard array use .append( for [] =  or <<

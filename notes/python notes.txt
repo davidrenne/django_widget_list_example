@@ -1,0 +1,126 @@
+Resources
+===================================================
+http://alpha.djangogenerator.com/ -- fucking awesome way to generate an app/project
+http://www.mercurytide.co.uk/media/whitepapers/django-cheat-sheet/django10-cheat-sheet.pdf
+https://code.djangoproject.com/wiki/DjangoResources
+http://www.easyeclipse.org/site/distributions/python.html
+http://net.tutsplus.com/tutorials/other/10-django-troublespots-for-beginners/
+
+Export my eclipse keys
+===================================================
+
+
+Batch File To Refresh Scripts
+===================================================
+FOR /F "tokens=5 delims= " %P IN ('netstat -a -n -o ^| findstr :8000') DO TaskKill.exe /PID %P /T /F
+C:\BitNami\djangostack-1.4.5-0\python\python.exe -u C:\EasyEclipse-for-Python-1.3.1\plugins\org.python.pydev.debug_1.3.13\pysrc\pydevd.py --vm_type python --client localhost --port 0 --file C:\Users\DAVE\workspace\WidgetList\manage.py
+
+
+Add to Path environment variable
+===================================================
+C:\BitNami\djangostack-1.4.5-0\apps\django\django\bin
+
+
+
+After creating a project change timezone
+===================================================
+grep -rl 'America/Chicago' settings.py | xargs sed -i 's/America\/Chicago/America\/New_York/g'
+
+
+
+Install pip
+===================================================
+https://raw.github.com/pypa/pip/master/contrib/get-pip.py
+
+
+Add to path 
+===================================================
+C:\BitNami\djangostack-1.4.5-0\python\scripts
+
+
+To publish a new gem
+===================================================
+setup.py register sdist upload
+setup.py bdist_egg upload
+RMDIR build /S
+RMDIR C:\Users\DAVE\AppData\Local\Temp\pip-build-DAVE\django-widget-list /S
+RMDIR C:\Users\DAVE\AppData\Local\Temp\pip-build-DAVE\ /S
+pip uninstall django-widget_list
+pip install django-widget_list
+RMDIR C:\Users\DAVE\AppData\Local\Temp\pip-build-DAVE\django-widget-list /S
+RMDIR C:\Users\DAVE\AppData\Local\Temp\pip-build-DAVE\ /S
+Common pip commands I will need
+===================================================
+pip uninstall django-widget_list
+pip install django-widget_list
+pip install --upgrade django-widget_list
+pip list --outdated
+
+Widgetlist installed version is here:
+===================================================
+C:\BitNami\djangostack-1.4.5-0\python\Lib\site-packages\widget_list
+
+
+After creating the app
+===================================================
+django-admin.py startapp NAMMMMMEEEE!!!!!!!!!!!!!
+
+Edit NAME -> urls.py and uncomment the admin stuff in two places
+
+from django.contrib import admin
+admin.autodiscover()
+
+And also editing setup.py
+
+    # Uncomment the next line to enable the admin:
+    'django.contrib.admin',
+    # Uncomment the next line to enable admin documentation:
+    'django.contrib.admindocs',
+
+
+
+Debug False
+===================================================
+you must add ALLOWED_HOSTS = ['localhost']
+http://stackoverflow.com/questions/15128135/django-setting-debug-false-causes-500-error
+
+Code notes
+===================================================
+"".split(' ') always returns an array like PHP
+
+
+
+Apache
+=================================================== 
+http://wiki.bitnami.com/Infrastructure_Stacks/BitNami_Django_Stack
+
+Create a file:
+
+C:\BitNami\djangostack-1.4.5-0\apps\django\scripts\django_my_site.wsgi
+
+import os, sys
+sys.path.append('C:/Users/DAVE/workspace/WidgetList/')
+sys.path.append('C:/Users/DAVE/workspace/WidgetList/mysite')
+os.environ['DJANGO_SETTINGS_MODULE'] = 'mysite.settings'
+
+import django.core.handlers.wsgi
+
+application = django.core.handlers.wsgi.WSGIHandler()
+
+
+C:\BitNami\djangostack-1.4.5-0\apps\django\conf\django.conf
+
+Add line:
+
+WSGIScriptAlias /MySite "C:\BitNami\djangostack-1.4.5-0/apps/django/scripts/django_my_site.wsgi"
+
+
+
+PIP
+=================================================== 
+
+If wrong version is being installed delete the build temp?
+
+C:\Users\DAVE\AppData\Local\Temp\pip-build-DAVE
+
+

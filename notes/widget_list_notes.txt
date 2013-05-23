@@ -1,0 +1,65 @@
+deep_merge
+to_params -- for when I am converting the multi-dimensional array back to url encoded
+strip_or_self
+split_it
+validate_items in widgets
+
+
+
+
+
+Install notes:
+
+    Alias /static_widget_list "C:\BitNami\DJANGO~1.5-0\python\Lib\site-packages\widget_list\static_widget_list" 
+    <Directory 'C:\BitNami\DJANGO~1.5-0\python\Lib\site-packages\widget_list\static_widget_list'>
+      Order allow,deny
+      Allow from all
+    </Directory>
+
+
+    
+Edit your project settings.py
+
+    INSTALLED_APPS = ( 
+        'widget_list',
+        
+
+Add 
+
+    STATICFILES_DIRS = (
+        'C:/BitNami/DJANGO~1.5-0/python/Lib/site-packages/widget_list/static_widget_list',
+    )
+    
+    
+In your views.py call the widget_list_header function to import the proper path based on whether you are using runserver or apache
+    
+    
+render_to_response('items/items_home.html',
+                              {
+                                 'yield'  : output,
+                                 'header' : widget_list_header(request),
+                              },
+                              context_instance=RequestContext(request))
+
+Inside items/items_home.html add the header and yield
+                              
+{% block header %}
+  {{ header }}
+{% endblock %}
+
+{% block primary %}
+  {{ yield }}
+{% endblock %}
+
+In your outer shell template <head> tag area
+
+
+        {% autoescape off %}
+          {% block header %}{% endblock %}
+        {% endautoescape %}
+        
+And where the widget_list is rendered:
+
+        {% autoescape off %}
+            {% block primary %}{% endblock %}
+        {% endautoescape %}
