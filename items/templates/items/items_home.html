@@ -1,0 +1,20 @@
+{% extends 'outer.html' %}
+
+<!--Editable Blocks-->
+{% block pagetitle %}
+  Tumblelog
+{% endblock %}
+
+{% block title %}
+  My Page Headline
+{% endblock %}
+
+
+<!--OUTPUT FROM CODE-->
+{% block header %}
+  {{ header }}
+{% endblock %}
+
+{% block primary %}
+  {{ yield }}
+{% endblock %}
